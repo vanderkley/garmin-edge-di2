@@ -6,11 +6,11 @@ Shimano Di2 **gear and battery** on Garmin **Edge** bike computers, including th
 
 A Connect IQ data field that connects to your Di2 rear derailleur over Bluetooth and shows the current gear, cog, gear ratio and Di2 battery. You can switch views with the D-FLY button on your shifter.
 
-<p align="center"><img src="docs/demo-layouts.gif" alt="Demo: the field in a half-width and a full-width slot, next to native Edge fields" width="300"></p>
+<p align="center"><img src="docs/demo-layouts.gif" alt="Demo: the Di2 field below the map on an Edge 1050, cycling through gear, cog, ratio, battery and range" width="300"></p>
 
-| Gear | Cog | Battery | Searching |
-|:---:|:---:|:---:|:---:|
-| ![Gear](docs/screenshots/gear.jpg) | ![Cog](docs/screenshots/cog.jpg) | ![Battery](docs/screenshots/battery.jpg) | ![Searching](docs/screenshots/searching.jpg) |
+| Edge 1050 | Edge Explore 2 | Edge Explore 3 | Edge 1040 | Edge 840 |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="docs/devices/edge-1050.gif" alt="Edge 1050" width="150"> | <img src="docs/devices/edge-explore-2.gif" alt="Edge Explore 2" width="150"> | <img src="docs/devices/edge-explore-3.gif" alt="Edge Explore 3" width="150"> | <img src="docs/devices/edge-1040.gif" alt="Edge 1040" width="150"> | <img src="docs/devices/edge-840.gif" alt="Edge 840" width="150"> |
 
 ## Features
 
