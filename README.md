@@ -6,6 +6,8 @@ Shimano Di2 **gear and battery** on Garmin **Edge** bike computers, including th
 
 A Connect IQ data field that connects to your Di2 rear derailleur over Bluetooth and shows the current gear, cog, gear ratio and Di2 battery. You can switch views with the D-FLY button on your shifter.
 
+**[Get it on the Connect IQ Store →](https://apps.garmin.com/apps/a319d9fb-0c58-4db6-b0ea-71344a05f72a)**
+
 <p align="center"><img src="docs/demo-layouts.gif" alt="Demo: the Di2 field below the map on an Edge 1050, cycling through gear, cog, ratio, battery and range" width="300"></p>
 
 | Edge 1050 | Edge Explore 2 | Edge Explore 3 | Edge 1040 | Edge 840 |
@@ -55,16 +57,16 @@ message). Enter that e-mail and the code in the app settings
 
 ## Install
 
-1. Download `Di2.prg` from [Releases](../../releases), or [build it yourself](#build-from-source).
-2. Connect the Edge via USB and copy `Di2.prg` to `Garmin/Apps/`.
-   On macOS, use `scripts/install-macos.sh` (see below).
-3. Unplug the Edge. Go to **Activity Profiles → profile → Data Screens**, pick a field
+1. Install **Di2 Gear and Battery** from the [Connect IQ Store](https://apps.garmin.com/apps/a319d9fb-0c58-4db6-b0ea-71344a05f72a) (Connect IQ app on your phone).
+2. On the Edge, go to **Activity Profiles → profile → Data Screens**, pick a field
    and choose **Connect IQ → Di2 Gear and Battery**.
-4. Close the E-TUBE app on your phone, then shift once to wake the Di2.
+3. In the Connect IQ app, open the app settings and choose your cassette and chainring(s).
+4. Shift once to wake the Di2. The field connects over Bluetooth.
 
-Cassette, chainring(s), active bike and battery warning are app settings (Connect IQ app on
-your phone). Sideloaded apps can't be configured from the phone: put your bike in
-`resources-personal/settings/properties.xml` and build with `scripts/build.sh personal`.
+**Sideloading instead** (your own build): copy `bin/Di2.prg` to `Garmin/Apps/` over USB
+(on macOS: `scripts/install-macos.sh`). Sideloaded apps can't be configured from the phone:
+put your bike in `resources-personal/settings/properties.xml` and build with
+`scripts/build.sh personal`.
 
 ## Build from source
 
