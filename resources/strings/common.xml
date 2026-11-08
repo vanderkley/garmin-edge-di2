@@ -1,0 +1,27 @@
+<strings>
+    <string id="UnitT">T</string>
+    <string id="UnitPct">%</string>
+    <string id="Cass1">10-51 (12s MTB / GRX)</string>
+    <string id="Cass2">10-45 (12s MTB / GRX)</string>
+    <string id="Cass3">11-50 Linkglide (12s)</string>
+    <string id="Cass4">11-30 (12s road)</string>
+    <string id="Cass5">11-34 (12s road)</string>
+    <string id="Cass6">11-36 (12s road)</string>
+    <string id="Cass7">11-28 (11s)</string>
+    <string id="Cass8">11-32 (11s)</string>
+    <string id="Cass9">11-34 (11s)</string>
+    <string id="GearPct1">Gear 1</string>
+    <string id="GearPct2">Gear 2</string>
+    <string id="GearPct3">Gear 3</string>
+    <string id="GearPct4">Gear 4</string>
+    <string id="GearPct5">Gear 5</string>
+    <string id="GearPct6">Gear 6</string>
+    <string id="GearPct7">Gear 7</string>
+    <string id="GearPct8">Gear 8</string>
+    <string id="GearPct9">Gear 9</string>
+    <string id="GearPct10">Gear 10</string>
+    <string id="GearPct11">Gear 11</string>
+    <string id="GearPct12">Gear 12</string>
+    <string id="UnitRatio">:1</string>
+    <string id="UnitNone">&#x200B;</string>
+</strings>

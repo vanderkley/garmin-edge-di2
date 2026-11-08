@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application id="f80c4c407127451fa410d3d3fb2c4d8b" type="datafield" name="@Strings.AppName"
+        entry="Di2App" launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.1.0">
+        <iq:products>
+            <iq:product id="edge530"/>
+            <iq:product id="edge830"/>
+            <iq:product id="edge1030"/>
+            <iq:product id="edge1030plus"/>
+            <iq:product id="edge540"/>
+            <iq:product id="edge840"/>
+            <iq:product id="edge1040"/>
+            <iq:product id="edge550"/>
+            <iq:product id="edge850"/>
+            <iq:product id="edge1050"/>
+            <iq:product id="edge1060"/>
+            <iq:product id="edgemtb"/>
+            <iq:product id="edgeexplore2"/>
+            <iq:product id="edgeexplore3"/>
+            <iq:product id="edgeexplore3plus"/>
+        </iq:products>
+        <iq:permissions>
+            <iq:uses-permission id="BluetoothLowEnergy"/>
+            <iq:uses-permission id="FitContributor"/>
+        </iq:permissions>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+            <iq:language>dut</iq:language>
+            <iq:language>deu</iq:language>
+            <iq:language>spa</iq:language>
+            <iq:language>fre</iq:language>
+            <iq:language>ita</iq:language>
+            <iq:language>por</iq:language>
+            <iq:language>dan</iq:language>
+            <iq:language>swe</iq:language>
+            <iq:language>nob</iq:language>
+            <iq:language>fin</iq:language>
+            <iq:language>pol</iq:language>
+            <iq:language>ces</iq:language>
+            <iq:language>slo</iq:language>
+            <iq:language>slv</iq:language>
+            <iq:language>hrv</iq:language>
+            <iq:language>hun</iq:language>
+            <iq:language>ron</iq:language>
+            <iq:language>bul</iq:language>
+            <iq:language>gre</iq:language>
+            <iq:language>est</iq:language>
+            <iq:language>lav</iq:language>
+            <iq:language>lit</iq:language>
+            <iq:language>ukr</iq:language>
+            <iq:language>rus</iq:language>
+            <iq:language>zhs</iq:language>
+        </iq:languages>
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>

@@ -1,0 +1,43 @@
+<fitContributions>
+    <fitField id="0" displayInChart="true" sortOrder="0" precision="0"
+        chartTitle="@Strings.GearChart" dataLabel="@Strings.GearChart"
+        unitLabel="@Strings.GearUnits" fillColor="#0074D9"/>
+    <fitField id="1" displayInChart="true" sortOrder="1" precision="0"
+        chartTitle="@Strings.TeethChart" dataLabel="@Strings.TeethChart"
+        unitLabel="@Strings.UnitT" fillColor="#FF851B"/>
+    <fitField id="3" displayInChart="true" sortOrder="2" precision="2"
+        chartTitle="@Strings.RatioChart" dataLabel="@Strings.RatioChart"
+        unitLabel="@Strings.UnitRatio" fillColor="#2ECC40"/>
+    <fitField id="2" displayInActivitySummary="true" sortOrder="3" precision="0"
+        dataLabel="@Strings.BattLabel" unitLabel="@Strings.UnitPct"/>
+    <fitField id="4" displayInActivitySummary="true" sortOrder="4" precision="2"
+        dataLabel="@Strings.AvgRatio" unitLabel="@Strings.UnitRatio"/>
+    <fitField id="5" displayInActivitySummary="true" sortOrder="5" precision="2"
+        dataLabel="@Strings.MaxRatio" unitLabel="@Strings.UnitRatio"/>
+    <fitField id="6" displayInActivitySummary="true" sortOrder="6" precision="0"
+        dataLabel="@Strings.Shifts" unitLabel="@Strings.UnitNone"/>
+    <fitField id="10" displayInActivitySummary="true" sortOrder="7" precision="0"
+        dataLabel="@Strings.GearPct1" unitLabel="@Strings.UnitPct"/>
+    <fitField id="11" displayInActivitySummary="true" sortOrder="8" precision="0"
+        dataLabel="@Strings.GearPct2" unitLabel="@Strings.UnitPct"/>
+    <fitField id="12" displayInActivitySummary="true" sortOrder="9" precision="0"
+        dataLabel="@Strings.GearPct3" unitLabel="@Strings.UnitPct"/>
+    <fitField id="13" displayInActivitySummary="true" sortOrder="10" precision="0"
+        dataLabel="@Strings.GearPct4" unitLabel="@Strings.UnitPct"/>
+    <fitField id="14" displayInActivitySummary="true" sortOrder="11" precision="0"
+        dataLabel="@Strings.GearPct5" unitLabel="@Strings.UnitPct"/>
+    <fitField id="15" displayInActivitySummary="true" sortOrder="12" precision="0"
+        dataLabel="@Strings.GearPct6" unitLabel="@Strings.UnitPct"/>
+    <fitField id="16" displayInActivitySummary="true" sortOrder="13" precision="0"
+        dataLabel="@Strings.GearPct7" unitLabel="@Strings.UnitPct"/>
+    <fitField id="17" displayInActivitySummary="true" sortOrder="14" precision="0"
+        dataLabel="@Strings.GearPct8" unitLabel="@Strings.UnitPct"/>
+    <fitField id="18" displayInActivitySummary="true" sortOrder="15" precision="0"
+        dataLabel="@Strings.GearPct9" unitLabel="@Strings.UnitPct"/>
+    <fitField id="19" displayInActivitySummary="true" sortOrder="16" precision="0"
+        dataLabel="@Strings.GearPct10" unitLabel="@Strings.UnitPct"/>
+    <fitField id="20" displayInActivitySummary="true" sortOrder="17" precision="0"
+        dataLabel="@Strings.GearPct11" unitLabel="@Strings.UnitPct"/>
+    <fitField id="21" displayInActivitySummary="true" sortOrder="18" precision="0"
+        dataLabel="@Strings.GearPct12" unitLabel="@Strings.UnitPct"/>
+</fitContributions>

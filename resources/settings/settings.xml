@@ -1,0 +1,59 @@
+<settings>
+    <setting propertyKey="@Properties.bike" title="@Strings.SetBike">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.Bike1</listEntry>
+            <listEntry value="2">@Strings.Bike2</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.cassette" title="@Strings.SetCassette1">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.CassNotSet</listEntry>
+            <listEntry value="1">@Strings.Cass1</listEntry>
+            <listEntry value="2">@Strings.Cass2</listEntry>
+            <listEntry value="3">@Strings.Cass3</listEntry>
+            <listEntry value="4">@Strings.Cass4</listEntry>
+            <listEntry value="5">@Strings.Cass5</listEntry>
+            <listEntry value="6">@Strings.Cass6</listEntry>
+            <listEntry value="7">@Strings.Cass7</listEntry>
+            <listEntry value="8">@Strings.Cass8</listEntry>
+            <listEntry value="9">@Strings.Cass9</listEntry>
+            <listEntry value="10">@Strings.CassCustom</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.customCogs" title="@Strings.SetCustomCogs1" prompt="@Strings.SetCustomCogsPrompt">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.chainrings" title="@Strings.SetChainrings1" prompt="@Strings.SetChainringsPrompt">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.cassette2" title="@Strings.SetCassette2">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.CassNotSet</listEntry>
+            <listEntry value="1">@Strings.Cass1</listEntry>
+            <listEntry value="2">@Strings.Cass2</listEntry>
+            <listEntry value="3">@Strings.Cass3</listEntry>
+            <listEntry value="4">@Strings.Cass4</listEntry>
+            <listEntry value="5">@Strings.Cass5</listEntry>
+            <listEntry value="6">@Strings.Cass6</listEntry>
+            <listEntry value="7">@Strings.Cass7</listEntry>
+            <listEntry value="8">@Strings.Cass8</listEntry>
+            <listEntry value="9">@Strings.Cass9</listEntry>
+            <listEntry value="10">@Strings.CassCustom</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.customCogs2" title="@Strings.SetCustomCogs2" prompt="@Strings.SetCustomCogsPrompt">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.chainrings2" title="@Strings.SetChainrings2" prompt="@Strings.SetChainringsPrompt">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.battWarn" title="@Strings.SetBattWarn">
+        <settingConfig type="numeric" min="5" max="50"/>
+    </setting>
+    <setting propertyKey="@Properties.licenseEmail" title="@Strings.SetLicenseEmail">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.licenseKey" title="@Strings.SetLicenseKey">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+</settings>

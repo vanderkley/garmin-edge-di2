@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512"><!-- Fonts: Garmin_Roboto_Bold (numbers) and Roboto-Medium (labels) from the Connect IQ SDK -->
+<defs>
+  <style>
+   @font-face { font-family: GNum; src: local('Roboto'); }
+   @font-face { font-family: GLab; src: local('Roboto'); }
+   .lab { font-family: GLab; font-size: 13px; fill: #000; text-anchor: middle; }
+   .num { font-family: GNum; fill: #000; }
+   .unit { font-family: GLab; font-size: 10.5px; fill: #000; }
+  </style>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00C2D1"/><stop offset="1" stop-color="#5B2BD9"/></linearGradient>
+  <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A3F47"/><stop offset="0.5" stop-color="#1D2026"/><stop offset="1" stop-color="#0E1013"/></linearGradient>
+  <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A3AAB4"/><stop offset="1" stop-color="#2A2E35"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.18"/><stop offset="0.4" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.4"/></filter>
+ </defs>
+ <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+ <g filter="url(#sh)">
+  <rect x="204" y="34" width="270" height="444" rx="30" fill="url(#rim)"/>
+  <rect x="207" y="37" width="264" height="438" rx="28" fill="url(#dark)"/>
+  <clipPath id="mclip"><rect x="218" y="48" width="242" height="104.0"/></clipPath>
+  <rect x="215" y="45" width="248" height="422" rx="8" fill="#000"/>
+  <rect x="218" y="48" width="242" height="416" fill="#FFFFFF"/>
+  <g clip-path="url(#mclip)">
+   <rect x="218" y="48" width="242" height="104.0" fill="#EEF2E6"/>
+   <path d="M213,120.8 C278,100.0 298,162.4 465,84.4" stroke="#FFFFFF" stroke-width="9" fill="none"/>
+   <path d="M248,43 L288,157.0" stroke="#FFFFFF" stroke-width="6"/>
+   <rect x="368.03999999999996" y="56.32" width="72.6" height="31.2" rx="4" fill="#CDE6C0"/>
+   <path d="M226,136.39999999999998 C268,105.2 313,141.60000000000002 392.24,91.68" stroke="#7B2FF7" stroke-width="5" fill="none" stroke-linecap="round"/>
+   <path d="M330.0,129.12 l9,-22 l9,22 l-9,-6 z" fill="#1E64C8" stroke="#FFF" stroke-width="2"/>
+  </g>
+  <text class="lab" x="278.5" y="169.0">SPEED</text><text class="num" x="272.5" y="237.3" text-anchor="middle" font-size="36">32.4</text><text class="unit" x="313.4" y="226.3">km</text><text class="unit" x="316.4" y="237.3">h</text>
+  <text class="lab" x="399.5" y="169.0">POWER</text><text class="num" x="393.5" y="237.3" text-anchor="middle" font-size="36">248</text><text class="unit" x="424.7" y="237.3">W</text>
+  <rect x="224.0" y="277.0" width="15.7" height="80.0" fill="#DCDCDC"/><rect x="243.2" y="287.3" width="15.7" height="69.7" fill="#DCDCDC"/><rect x="262.3" y="297.6" width="15.7" height="59.4" fill="#DCDCDC"/><rect x="281.5" y="307.9" width="15.7" height="49.1" fill="#DCDCDC"/><rect x="300.7" y="316.5" width="15.7" height="40.5" fill="#DCDCDC"/><rect x="319.8" y="323.4" width="15.7" height="33.6" fill="#DCDCDC"/><rect x="339.0" y="328.5" width="15.7" height="28.5" fill="#FF6A00"/><rect x="358.2" y="333.7" width="15.7" height="23.3" fill="#DCDCDC"/><rect x="377.3" y="337.1" width="15.7" height="19.9" fill="#DCDCDC"/><rect x="396.5" y="340.5" width="15.7" height="16.5" fill="#DCDCDC"/><rect x="415.7" y="344.0" width="15.7" height="13.0" fill="#DCDCDC"/><rect x="434.8" y="347.4" width="15.7" height="9.6" fill="#DCDCDC"/><text class="lab" x="339.0" y="273.0">GEAR</text><rect x="434" y="262.0" width="18" height="9" rx="1.5" fill="none" stroke="#000" stroke-width="1.5"/><rect x="452" y="264.5" width="2" height="4" fill="#000"/><rect x="436" y="264.0" width="12" height="5" fill="#2ECC40"/><text class="num" x="333.0" y="345.4" text-anchor="middle" font-size="44">7</text><text class="unit" x="348.0" y="308.0" font-size="12">/12</text>
+  <text class="lab" x="278.5" y="377.0">DISTANCE</text><text class="num" x="272.5" y="445.3" text-anchor="middle" font-size="36">42.6</text><text class="unit" x="313.4" y="445.3">km</text>
+  <text class="lab" x="399.5" y="377.0">HEART RATE</text><text class="num" x="393.5" y="445.3" text-anchor="middle" font-size="36">142</text><text class="unit" x="424.7" y="445.3">bpm</text>
+  <g stroke="#1E64C8" stroke-width="2">
+   <line x1="218" y1="152.0" x2="460" y2="152.0"/>
+   <line x1="218" y1="256.0" x2="460" y2="256.0"/>
+   <line x1="218" y1="360.0" x2="460" y2="360.0"/>
+   <line x1="339.0" y1="152.0" x2="339.0" y2="256.0"/>
+   <line x1="339.0" y1="360.0" x2="339.0" y2="464"/>
+  </g>
+  <rect x="218" y="48" width="242" height="416" fill="url(#glass)"/>
+ </g>
+ <g transform="translate(104 384) scale(0.5) translate(-256 -420)" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#sh)">
+  <g stroke="#1A1D22" stroke-width="24" stroke-opacity="0.5">
+   <circle cx="140" cy="420" r="72"/><circle cx="372" cy="420" r="72"/>
+   <polyline points="140,420 240,420 214,312 140,420"/><polyline points="214,312 340,318 348,350 240,420"/><polyline points="348,350 372,420"/>
+   <path d="M206,296 L214,312"/>
+   <path d="M184,294 L228,294"/>
+   <path d="M340,318 L346,304 L370,304 Q386,306 380,328 L370,330"/>
+  </g>
+  <circle cx="240" cy="420" r="33" fill="#1A1D22" fill-opacity="0.5"/>
+  <g stroke="#FFFFFF" stroke-width="14">
+   <circle cx="140" cy="420" r="72"/><circle cx="372" cy="420" r="72"/>
+   <polyline points="140,420 240,420 214,312 140,420"/><polyline points="214,312 340,318 348,350 240,420"/><polyline points="348,350 372,420"/>
+   <path d="M206,296 L214,312"/>
+   <path d="M184,294 L228,294"/>
+   <path d="M340,318 L346,304 L370,304 Q386,306 380,328 L370,330"/>
+  </g>
+  <circle cx="240" cy="420" r="22" fill="#FF6A00" stroke="#FFFFFF" stroke-width="6"/>
+ </g>
+ <text x="104" y="302" text-anchor="middle" font-family="Arial Black" font-size="66" fill="#FFFFFF" stroke="#1A1D22" stroke-opacity="0.5" stroke-width="5" stroke-linejoin="round" paint-order="stroke" filter="url(#sh)">Di2</text>
+</svg>

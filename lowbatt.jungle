@@ -1,0 +1,3 @@
+project.manifest = manifest.xml
+base.excludeAnnotations = nodemo;single;normalbatt;trialend
+base.resourcePath = resources;resources-defaults

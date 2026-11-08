@@ -1,0 +1,27 @@
+# build output
+bin/
+build/
+gen/
+*.prg
+*.prg.debug.xml
+*.iq
+external-mir/
+internal-mir/
+
+# signing keys - never commit
+*.der
+*.pem
+keys/
+
+# local / OS
+.DS_Store
+*.log
+logs/
+.vscode/
+
+# Pro license secret - local only
+source/Di2Secret.mc
+
+# your own bike defaults for sideloaded builds
+resources-personal/
+personal.jungle
