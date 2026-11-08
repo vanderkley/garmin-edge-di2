@@ -33,6 +33,26 @@ module Di2Demo {
         }
     }
 
+    // the demo range is already learned: 9.5 km per % battery
+    (:demo)
+    function setupRange(range) {
+        range.kmPerPct = 9.5;
+    }
+
+    (:nodemo)
+    function setupRange(range) {
+    }
+
+    (:demo)
+    function showTrial() {
+        return false;
+    }
+
+    (:nodemo)
+    function showTrial() {
+        return true;
+    }
+
     (:nodemo)
     function start(ble) {
         ble.start();
@@ -87,48 +107,139 @@ module Di2Demo {
         return true;
     }
 
-    // A realistic ride page around two Di2 fields (any screen size):
-    //   [ Di2 half ][  SPEED  ]
-    //   [  POWER   ][  HEART  ]
-    //   [   Di2 full width    ]
+    // Per-device ride pages (chosen by screen size), each with a different split:
+    // maps over 4 cells, one Di2 field over 1 or 2 cells, never the same field twice.
+    // A cell is [kind, x, y, w, h] in fractions of the screen; kind is a Number
+    // (Di2 field, value = view offset), :map, or a native field name.
+    (:layout)
+    function layoutFor(sw, sh) {
+        if (sw == 480 && sh == 800) {        // Edge 1050 / 1060
+            return [[:map, 0, 0, 1, 0.5], [0, 0, 0.5, 1, 0.25],
+                    [:speed, 0, 0.75, 0.5, 0.25], [:heart, 0.5, 0.75, 0.5, 0.25]];
+        }
+        if (sw == 240 && sh == 400) {        // Edge Explore 2
+            return [[:speed, 0, 0, 0.5, 0.25], [:power, 0.5, 0, 0.5, 0.25],
+                    [0, 0, 0.25, 1, 0.25],
+                    [:cadence, 0, 0.5, 0.5, 0.25], [:heart, 0.5, 0.5, 0.5, 0.25],
+                    [:distance, 0, 0.75, 0.5, 0.25], [:time, 0.5, 0.75, 0.5, 0.25]];
+        }
+        if (sw == 360 && sh == 640) {        // Edge Explore 3
+            return [[:map, 0, 0, 1, 0.5], [0, 0, 0.5, 0.5, 0.25], [:distance, 0.5, 0.5, 0.5, 0.25],
+                    [:elevation, 0, 0.75, 0.5, 0.25], [:time, 0.5, 0.75, 0.5, 0.25]];
+        }
+        if (sw == 282 && sh == 470) {        // Edge 1040 / 1030
+            return [[:time, 0, 0, 0.5, 0.334], [:ascent, 0.5, 0, 0.5, 0.334],
+                    [0, 0, 0.334, 0.5, 0.333], [:temperature, 0.5, 0.334, 0.5, 0.333],
+                    [:cadence, 0, 0.667, 0.5, 0.333], [:heart, 0.5, 0.667, 0.5, 0.333]];
+        }
+        if (sw == 246 && sh == 322) {        // Edge 840 / 540 / 830 / 530
+            return [[:map, 0, 0, 1, 0.5], [0, 0, 0.5, 0.5, 0.5], [:calories, 0.5, 0.5, 0.5, 0.5]];
+        }
+        return [[:speed, 0, 0, 0.5, 0.27], [:power, 0.5, 0, 0.5, 0.27],
+                [:heart, 0, 0.27, 0.5, 0.27], [:cadence, 0.5, 0.27, 0.5, 0.27], [0, 0, 0.54, 1, 0.46]];
+    }
+
     (:layout)
     function drawPage(view, dc) {
         var w = dc.getWidth();
         var h = dc.getHeight();
-        var row1 = (h * 0.27).toNumber();
-        var row2 = (h * 0.27).toNumber();
-        var row3 = h - row1 - row2;
-        var half = w / 2;
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
         dc.clear();
-
-        // values follow the demo gear a little, like a real ride
-        var g = view.ble.gear;
-        var speed = 24.0 + g * 0.9 + (t % 5) * 0.1;
-        var power = 205 + g * 6 + (t % 7);
-        var hr = 128 + g + (t % 3);
-
-        drawDi2(view, dc, 0, 0, half, row1);
-        nativeField(dc, half, 0, w - half, row1, "SPEED", speed.format("%.1f"), "km/h");
-        nativeField(dc, 0, row1, half, row2, "POWER", power.toString(), "W");
-        nativeField(dc, half, row1, w - half, row2, "HEART RATE", hr.toString(), "bpm");
-        drawDi2(view, dc, 0, row1 + row2, w, row3);
-
+        var cells = layoutFor(w, h);
+        for (var i = 0; i < cells.size(); i++) {
+            var c = cells[i];
+            var x = (c[1] * w).toNumber();
+            var y = (c[2] * h).toNumber();
+            var cw = ((c[1] + c[3]) * w).toNumber() - x;
+            var ch = ((c[2] + c[4]) * h).toNumber() - y;
+            var k = c[0];
+            if (k instanceof Number) {
+                drawDi2(view, dc, x, y, cw, ch, k);
+            } else if (k == :map) {
+                drawMap(dc, x, y, cw, ch);
+            } else {
+                var f = fieldValue(view, k);
+                nativeField(dc, x, y, cw, ch, f[0], f[1], f[2]);
+            }
+        }
         // separators like the Edge
-        var pw = w >= 400 ? 3 : 2;
         dc.setColor(0x1E64C8, Graphics.COLOR_TRANSPARENT);
-        dc.setPenWidth(pw);
-        dc.drawLine(0, row1, w, row1);
-        dc.drawLine(0, row1 + row2, w, row1 + row2);
-        dc.drawLine(half, 0, half, row1 + row2);
+        dc.setPenWidth(w >= 400 ? 3 : 2);
+        for (var i = 0; i < cells.size(); i++) {
+            var c = cells[i];
+            var x = (c[1] * w).toNumber();
+            var y = (c[2] * h).toNumber();
+            var cw = ((c[1] + c[3]) * w).toNumber() - x;
+            var ch = ((c[2] + c[4]) * h).toNumber() - y;
+            if (y > 0) { dc.drawLine(x, y, x + cw, y); }
+            if (x > 0) { dc.drawLine(x, y, x, y + ch); }
+        }
         dc.setPenWidth(1);
     }
 
+    // Realistic values that move with the demo gear.
     (:layout)
-    function drawDi2(view, dc, x, y, w, h) {
+    function fieldValue(view, k) {
+        var g = view.ble.gear;
+        if (k == :speed) { return ["SPEED", (24.0 + g * 0.9 + (t % 5) * 0.1).format("%.1f"), "km/h"]; }
+        if (k == :heart) { return ["HEART RATE", (128 + g + (t % 3)).toString(), "bpm"]; }
+        if (k == :power) { return ["POWER", (205 + g * 6 + (t % 7)).toString(), "W"]; }
+        if (k == :cadence) { return ["CADENCE", (82 + g + (t % 4)).toString(), "rpm"]; }
+        if (k == :distance) { return ["DISTANCE", (42.6 + t * 0.009).format("%.1f"), "km"]; }
+        if (k == :ascent) { return ["ASCENT", (412 + t / 4).toString(), "m"]; }
+        if (k == :elevation) { return ["ELEVATION", (86 + (t % 20)).toString(), "m"]; }
+        if (k == :temperature) { return ["TEMPERATURE", "18", "°C"]; }
+        if (k == :calories) { return ["CALORIES", (640 + t * 2).toString(), "kcal"]; }
+        // :time
+        var s = 5072 + t;
+        return ["TIME", (s / 3600) + ":" + ((s / 60) % 60).format("%02d") + ":" + (s % 60).format("%02d"), ""];
+    }
+
+    // A simple map: land, park, water, roads, the purple route and the position arrow.
+    (:layout)
+    function drawMap(dc, x, y, w, h) {
+        dc.setClip(x, y, w, h);
+        dc.setColor(0xEEF2E6, 0xEEF2E6);
+        dc.fillRectangle(x, y, w, h);
+        dc.setColor(0xCDE6C0, Graphics.COLOR_TRANSPARENT);
+        dc.fillPolygon([[x + w * 0.62, y], [x + w, y], [x + w, y + h * 0.42], [x + w * 0.7, y + h * 0.35]]);
+        dc.setColor(0xAED3F2, Graphics.COLOR_TRANSPARENT);
+        dc.fillPolygon([[x, y + h * 0.7], [x + w * 0.22, y + h * 0.62], [x + w * 0.3, y + h], [x, y + h]]);
+        // roads
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth((w * 0.035).toNumber());
+        dc.drawLine(x, y + h * 0.3, x + w, y + h * 0.18);
+        dc.drawLine(x + w * 0.35, y, x + w * 0.5, y + h);
+        dc.setPenWidth((w * 0.018).toNumber());
+        dc.drawLine(x + w * 0.5, y + h * 0.55, x + w, y + h * 0.75);
+        dc.drawLine(x + w * 0.1, y + h * 0.45, x + w * 0.4, y + h * 0.5);
+        // route
+        dc.setColor(0x7B2FF7, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth((w * 0.022).toNumber());
+        var r = [[0.05, 0.95], [0.25, 0.78], [0.45, 0.62], [0.5, 0.45], [0.72, 0.3], [0.95, 0.24]];
+        for (var i = 0; i < r.size() - 1; i++) {
+            dc.drawLine(x + w * r[i][0], y + h * r[i][1], x + w * r[i + 1][0], y + h * r[i + 1][1]);
+        }
+        dc.setPenWidth(1);
+        // position arrow
+        var ax = x + w * 0.45;
+        var ay = y + h * 0.62;
+        var s = w * 0.05;
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.fillPolygon([[ax, ay - s * 1.4], [ax + s * 1.0, ay + s * 1.1], [ax, ay + s * 0.5], [ax - s * 1.0, ay + s * 1.1]]);
+        dc.setColor(0x1E64C8, Graphics.COLOR_TRANSPARENT);
+        dc.fillPolygon([[ax, ay - s], [ax + s * 0.7, ay + s * 0.8], [ax, ay + s * 0.35], [ax - s * 0.7, ay + s * 0.8]]);
+        dc.clearClip();
+    }
+
+    (:layout)
+    function drawDi2(view, dc, x, y, w, h, offset) {
         var ref = Graphics.createBufferedBitmap({ :width => w, :height => h });
         var bmp = ref.get();
+        var m = view.mode;
+        view.mode = (m + offset) % Di2View.MODE_COUNT;
         view.drawField(bmp.getDc());
+        view.mode = m;
         dc.drawBitmap(x, y, bmp);
     }
 

@@ -1,0 +1,13 @@
+<properties>
+    <!-- Demo builds (simulator): a 10-51 cassette and a 40T chainring. -->
+    <property id="bike" type="number">1</property>
+    <property id="cassette" type="number">1</property>
+    <property id="customCogs" type="string"></property>
+    <property id="chainrings" type="string">40</property>
+    <property id="cassette2" type="number">0</property>
+    <property id="customCogs2" type="string"></property>
+    <property id="chainrings2" type="string"></property>
+    <property id="battWarn" type="number">10</property>
+    <property id="licenseEmail" type="string"></property>
+    <property id="licenseKey" type="string"></property>
+</properties>

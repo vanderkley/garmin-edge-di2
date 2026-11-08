@@ -1,3 +1,3 @@
 project.manifest = manifest.xml
 base.excludeAnnotations = nodemo;single;lowbatt;trialend
-base.resourcePath = resources;resources-defaults
+base.resourcePath = resources;resources-demo

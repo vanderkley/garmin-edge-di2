@@ -74,6 +74,7 @@ class Di2View extends WatchUi.DataField {
         ble = b;
         cfg = c;
         range = new Di2Range();
+        Di2Demo.setupRange(range);
         pro = new Di2Pro();
         pro.licensed = cfg.licensed;
         labels = [
@@ -370,7 +371,7 @@ class Di2View extends WatchUi.DataField {
         var h = dc.getHeight();
         var label = isWide(w) ? labels[mode] : labelsShort[mode];
         var trialLabel = false;
-        if (!pro.licensed && pro.unlocked() && ble.isConnected()) {
+        if (Di2Demo.showTrial() && !pro.licensed && pro.unlocked() && ble.isConnected()) {
             var left = pro.remainingKm();
             if (left <= 50 || ticks < trialShowUntil) {
                 var v = metric ? left : left / 1.609344;
