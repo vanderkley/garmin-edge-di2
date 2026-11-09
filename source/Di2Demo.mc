@@ -177,22 +177,19 @@ module Di2Demo {
         dc.setPenWidth(1);
     }
 
-    // Realistic values that move with the demo gear.
+    // Fixed, realistic ride values: only the Di2 field moves in the demo.
     (:layout)
     function fieldValue(view, k) {
-        var g = view.ble.gear;
-        if (k == :speed) { return ["SPEED", (24.0 + g * 0.9 + (t % 5) * 0.1).format("%.1f"), "km/h"]; }
-        if (k == :heart) { return ["HEART RATE", (128 + g + (t % 3)).toString(), "bpm"]; }
-        if (k == :power) { return ["POWER", (205 + g * 6 + (t % 7)).toString(), "W"]; }
-        if (k == :cadence) { return ["CADENCE", (82 + g + (t % 4)).toString(), "rpm"]; }
-        if (k == :distance) { return ["DISTANCE", (42.6 + t * 0.009).format("%.1f"), "km"]; }
-        if (k == :ascent) { return ["ASCENT", (412 + t / 4).toString(), "m"]; }
-        if (k == :elevation) { return ["ELEVATION", (86 + (t % 20)).toString(), "m"]; }
+        if (k == :speed) { return ["SPEED", "31.4", "km/h"]; }
+        if (k == :heart) { return ["HEART RATE", "142", "bpm"]; }
+        if (k == :power) { return ["POWER", "248", "W"]; }
+        if (k == :cadence) { return ["CADENCE", "89", "rpm"]; }
+        if (k == :distance) { return ["DISTANCE", "42.6", "km"]; }
+        if (k == :ascent) { return ["ASCENT", "418", "m"]; }
+        if (k == :elevation) { return ["ELEVATION", "94", "m"]; }
         if (k == :temperature) { return ["TEMPERATURE", "18", "°C"]; }
-        if (k == :calories) { return ["CALORIES", (640 + t * 2).toString(), "kcal"]; }
-        // :time
-        var s = 5072 + t;
-        return ["TIME", (s / 3600) + ":" + ((s / 60) % 60).format("%02d") + ":" + (s % 60).format("%02d"), ""];
+        if (k == :calories) { return ["CALORIES", "684", "kcal"]; }
+        return ["TIME", "1:24", ""];
     }
 
     // A simple map: land, park, water, roads, the purple route and the position arrow.
