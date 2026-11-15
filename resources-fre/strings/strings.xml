@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATTERIE DI2</string>
     <string id="ModeRange">AUTONOMIE DI2</string>
     <string id="ModeRangeShort">AUTONOMIE</string>
-    <string id="Searching">Recherche Di2…</string>
-    <string id="SearchingShort">Recherche…</string>
+    <string id="Connecting">Connexion Di2…</string>
     <string id="WakeHint">Changez ou appuyez sur le bouton Di2</string>
     <string id="FwUnsupported1">Di2 indisponible</string>
     <string id="FwUnsupported2">Firmware Edge non pris en charge</string>
     <string id="FwShort1">Firmware Edge</string>
     <string id="FwShort2">non pris en charge</string>
-    <string id="Learning">apprentissage</string>
     <string id="GearChart">Vitesse</string>
     <string id="GearUnits">vit.</string>
     <string id="TeethChart">Pignon arrière</string>

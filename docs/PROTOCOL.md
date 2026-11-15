@@ -47,8 +47,10 @@ Per channel, the high nibble is the event and the low nibble is a per-channel co
 
 ## Edge firmware quirks
 
-- **31.33**: `registerProfile` with a custom 128-bit UUID returns status 2, and any
-  `registerProfile` after that crashes the app. The field registers the Shimano service first
-  and stops after a failure.
+- **31.33** (Edge Explore 2): `registerProfile` with a custom 128-bit UUID returns status 2,
+  and any `registerProfile` after that crashes the app. The standard battery service still works.
+  The field registers the battery service first and the Shimano service last, and never
+  registers again after a failure. If only the Shimano service fails, the field runs in
+  battery-only mode (Di2 battery and range, no gear).
 - **30.22**: works. `CONNECTION_STRATEGY_SECURE_PAIR_BOND` froze the Edge, so the field never bonds.
 - `AntPlus.Shifting` is not available to data fields on the Edge Explore 2.

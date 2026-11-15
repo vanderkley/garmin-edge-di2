@@ -20,7 +20,7 @@ A Connect IQ data field that connects to your Di2 rear derailleur over Bluetooth
 - **Cog**: rear cog in teeth (`24T`), shown with the chainring and cog drawn to scale
 - **Ratio**: chainring / cog (`1.67`)
 - **Di2 battery**: level in percent, colour-coded like Shimano's own indicator
-- **Battery range**: estimated km left, learned from your own rides
+- **Battery range**: estimated km left, starting from Shimano's ~1000 km per charge and adapting to your own rides
 - **Low battery warning**: a tone once per ride when the Di2 battery reaches 10% (adjustable); the field label stays red while the battery is low
 - **Short dropouts**: if the connection drops, the last gear stays on screen in grey for 30 s
 - **D-FLY button**: short press = next view, long press = previous view, double press = gear
@@ -51,9 +51,9 @@ message). Enter that e-mail and the code in the app settings
 > `Garmin/Apps/LOGS/DI2.TXT` on the Edge, ride a few minutes using both chainrings, and
 > attach that file to a GitHub issue. The field logs every raw gear packet there.
 
-> **Edge Explore 2 firmware 31.33 is not supported.** It has a Bluetooth bug that blocks
-> Connect IQ apps from reading Di2. The field then shows *"Edge firmware not supported"*.
-> It works on 30.22. Other Edge models with the same firmware generation may be affected too.
+> **Edge Explore 2 firmware 31.33: battery only.** This firmware has a Bluetooth bug that blocks
+> Connect IQ apps from reading the Di2 gear. On 31.33 the field shows the Di2 battery and range only.
+> Everything works on 30.22. Other Edge models may get the same bug in a firmware update.
 
 ## Install
 

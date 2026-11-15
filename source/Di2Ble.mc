@@ -14,9 +14,12 @@ import Toybox.System;
 //             4 double, 0 released), low nibble = per-channel counter.
 //
 // Firmware notes:
-//  - fw 31.33: registerProfile with a custom 128-bit UUID returns status 2 and
-//    any registerProfile after that crashes the app. So the Shimano service is
-//    registered FIRST and nothing is registered after a failure.
+//  - fw 31.33 (Edge Explore 2): registerProfile with a custom 128-bit UUID
+//    returns status 2 and any registerProfile after that crashes the app.
+//    The standard battery service still works. So the battery service is
+//    registered FIRST, the Shimano service LAST, and nothing is registered
+//    after a failure. If only the Shimano service fails, the field runs in
+//    battery-only mode (gearAvailable = false).
 //  - Bonding (CONNECTION_STRATEGY_SECURE_PAIR_BOND) froze the Edge on 30.22:
 //    never bond.
 class Di2Ble extends BluetoothLowEnergy.BleDelegate {
@@ -49,6 +52,8 @@ class Di2Ble extends BluetoothLowEnergy.BleDelegate {
     var svcShimanoCfg;
 
     var regQueue = [];
+    var registered = 0;      // profiles registered successfully
+    var gearAvailable = true; // false: Shimano service blocked by the Edge firmware, battery only
     var device = null;
     var target = null;
     var connectStartedAt = 0;
@@ -92,12 +97,13 @@ class Di2Ble extends BluetoothLowEnergy.BleDelegate {
     // ---------- lifecycle ----------
     function start() {
         var cccd = BluetoothLowEnergy.cccdUuid();
+        // battery first: it works on every firmware; Shimano last (see above)
         regQueue = [
+            { :uuid => svcBatt, :characteristics => [
+                { :uuid => chrBatt, :descriptors => [cccd] } ] },
             { :uuid => svcShimano, :characteristics => [
                 { :uuid => chrGear, :descriptors => [cccd] },
-                { :uuid => chrDfly, :descriptors => [cccd] } ] },
-            { :uuid => svcBatt, :characteristics => [
-                { :uuid => chrBatt, :descriptors => [cccd] } ] }
+                { :uuid => chrDfly, :descriptors => [cccd] } ] }
         ];
         registerNext();
     }
@@ -148,13 +154,25 @@ class Di2Ble extends BluetoothLowEnergy.BleDelegate {
             failRegistration();
             return;
         }
+        registered++;
         registerNext();
     }
 
     function failRegistration() {
         // Never call registerProfile again (crashes on fw 31.33).
         regQueue = [];
-        state = ST_FW_UNSUPPORTED;
+        if (registered > 0) {
+            // battery service is registered, only the Shimano one failed
+            gearAvailable = false;
+            startScan();
+        } else {
+            state = ST_FW_UNSUPPORTED;
+        }
+    }
+
+    // Bluetooth link is being set up (found the Di2, not ready yet).
+    function isConnecting() {
+        return state == ST_CONNECTING || state == ST_SETUP;
     }
 
     // ---------- scanning / connecting ----------
@@ -235,12 +253,12 @@ class Di2Ble extends BluetoothLowEnergy.BleDelegate {
             lostAt = 0;
             state = ST_SETUP;
             chCounter = [-1, -1, -1, -1, -1];
-            ops = [
-                [:read, svcBatt, chrBatt, 0],
-                [:cccd, svcShimano, chrGear, 0x01],   // notifications
-                [:cccd, svcShimano, chrDfly, 0x02],   // indications
-                [:cccd, svcBatt, chrBatt, 0x01]
-            ];
+            ops = [[:read, svcBatt, chrBatt, 0]];
+            if (gearAvailable) {
+                ops.add([:cccd, svcShimano, chrGear, 0x01]);   // notifications
+                ops.add([:cccd, svcShimano, chrDfly, 0x02]);   // indications
+            }
+            ops.add([:cccd, svcBatt, chrBatt, 0x01]);
             opBusy = false;
             lastBatteryRead = System.getTimer();
             nextOp();

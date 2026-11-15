@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2-AKKU</string>
     <string id="ModeRange">DI2-REICHWEITE</string>
     <string id="ModeRangeShort">REICHWEITE</string>
-    <string id="Searching">Suche Di2…</string>
-    <string id="SearchingShort">Suche…</string>
+    <string id="Connecting">Verbinde Di2…</string>
     <string id="WakeHint">Schalten oder Di2-Taste drücken</string>
     <string id="FwUnsupported1">Di2 nicht verfügbar</string>
     <string id="FwUnsupported2">Edge-Firmware nicht unterstützt</string>
     <string id="FwShort1">Edge-Firmware</string>
     <string id="FwShort2">nicht unterstützt</string>
-    <string id="Learning">lernt</string>
     <string id="GearChart">Gang</string>
     <string id="GearUnits">Gang</string>
     <string id="TeethChart">Ritzel hinten</string>

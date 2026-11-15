@@ -28,12 +28,10 @@ class Di2View extends WatchUi.DataField {
     var ticks = 0;
     var labels = [];
     var labelsShort = [];
-    var sSearching;
+    var sConnecting;
     var sWake;
     var sFw1;
     var sFw2;
-    var sLearning;
-    var sSearchShort;
     var sFwShort1;
     var sFwShort2;
     var metric = true;
@@ -87,15 +85,13 @@ class Di2View extends WatchUi.DataField {
         // only "BATTERY RANGE" gets a shorter label in narrow fields
         labelsShort = [labels[0], labels[1], labels[2], labels[3],
             WatchUi.loadResource(Rez.Strings.ModeRangeShort)];
-        sSearching = WatchUi.loadResource(Rez.Strings.Searching);
+        sConnecting = WatchUi.loadResource(Rez.Strings.Connecting);
         sWake = WatchUi.loadResource(Rez.Strings.WakeHint);
         sFw1 = WatchUi.loadResource(Rez.Strings.FwUnsupported1);
         sFw2 = WatchUi.loadResource(Rez.Strings.FwUnsupported2);
-        sLearning = WatchUi.loadResource(Rez.Strings.Learning);
         sTrialEnded = WatchUi.loadResource(Rez.Strings.TrialEnded);
         sUnlock = WatchUi.loadResource(Rez.Strings.UnlockHint);
         sTrialLeft = WatchUi.loadResource(Rez.Strings.TrialLeft);
-        sSearchShort = WatchUi.loadResource(Rez.Strings.SearchingShort);
         sFwShort1 = WatchUi.loadResource(Rez.Strings.FwShort1);
         sFwShort2 = WatchUi.loadResource(Rez.Strings.FwShort2);
         var ds = System.getDeviceSettings();
@@ -135,7 +131,11 @@ class Di2View extends WatchUi.DataField {
     }
 
     // A mode is only offered when its data can be shown.
+    // Battery-only mode (Edge firmware blocks the gear service): battery and range.
     function modeAvailable(m) {
+        if (!ble.gearAvailable) {
+            return m == MODE_BATT || m == MODE_RANGE;
+        }
         if (m == MODE_COG) {
             return cfg.cogs != null;
         }
@@ -152,7 +152,11 @@ class Di2View extends WatchUi.DataField {
                 return;
             }
         }
-        mode = MODE_GEAR;
+        mode = defaultMode();
+    }
+
+    function defaultMode() {
+        return ble.gearAvailable ? MODE_GEAR : MODE_BATT;
     }
 
     // ---------- once per second ----------
@@ -172,12 +176,12 @@ class Di2View extends WatchUi.DataField {
             } else if (e == :long) {
                 stepMode(-1);
             } else if (e == :double) {
-                mode = MODE_GEAR;
+                mode = defaultMode();
             }
             flashUntil = ticks + 2;
         }
         if (!modeAvailable(mode)) {
-            mode = MODE_GEAR;
+            mode = defaultMode();
         }
 
         var running = info has :timerState && info.timerState == Activity.TIMER_STATE_ON;
@@ -322,7 +326,7 @@ class Di2View extends WatchUi.DataField {
         // MODE_RANGE
         var km = range.rangeKm(ble.battery);
         if (km < 0) {
-            return ["--", sLearning];
+            return ["--", ""];
         }
         var v = metric ? km : km / 1.609344;
         return [v.toNumber().toString(), metric ? "km" : "mi"];
@@ -432,25 +436,13 @@ class Di2View extends WatchUi.DataField {
             drawLocked(dc, fg, lh, labelFont, w, h);
             return;
         }
-        if (!connected) {
-            drawShifter(dc, dark, lh, w, h);
-            drawHint(dc, fg, lh, labelFont, sSearching, sWake, sSearchShort, "");
+        // not connected yet: ask to wake the Di2; once it is found: "Connecting Di2…"
+        if (!stale && ble.isConnecting()) {
+            drawMessage(dc, fg, lh, labelFont, sConnecting);
             return;
         }
-
-        // battery range still learning: readable text + progress instead of "--"
-        if (mode == MODE_RANGE && range.rangeKm(ble.battery) < 0) {
-            var pr = range.progress(ble.battery);
-            var done = pr[0];
-            var target = pr[1];
-            var u = pr[2];
-            if (u.equals("km") && !metric) {
-                done = (done / 1.609344).toNumber();
-                target = (target / 1.609344).toNumber();
-                u = "mi";
-            }
-            var ptxt = done + "/" + target + " " + u;
-            drawHint(dc, fg, lh, labelFont, sLearning, ptxt, sLearning, ptxt);
+        if (!connected) {
+            drawMessage(dc, fg, lh, labelFont, sWake);
             return;
         }
 
@@ -611,6 +603,114 @@ class Di2View extends WatchUi.DataField {
         }
     }
 
+    // One message, centred in the field below the label, in the label font
+    // (smaller only when needed), wrapped over up to 3 lines.
+    function drawMessage(dc, fg, top, labelFont, text) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var order = [Graphics.FONT_MEDIUM, Graphics.FONT_SMALL, Graphics.FONT_TINY, Graphics.FONT_XTINY];
+        var font = Graphics.FONT_XTINY;
+        var lines = null;
+        var started = false;
+        for (var i = 0; i < order.size(); i++) {
+            if (order[i] == labelFont) { started = true; }
+            if (!started) { continue; }
+            var l = wrapText(dc, text, order[i], w - 8);
+            if (l.size() <= 3 && l.size() * dc.getFontHeight(order[i]) <= h - top
+                    && widest(dc, l, order[i]) <= w - 8) {
+                font = order[i];
+                lines = l;
+                break;
+            }
+        }
+        if (lines == null) {
+            lines = wrapText(dc, text, font, w - 8);
+        }
+        var lineH = dc.getFontHeight(font);
+        var y = top + (h - top - lines.size() * lineH) / 2;
+        if (y < top) { y = top; }
+        dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
+        for (var i = 0; i < lines.size(); i++) {
+            dc.drawText(w / 2, y + i * lineH, font, lines[i], Graphics.TEXT_JUSTIFY_CENTER);
+        }
+    }
+
+    function widest(dc, lines, font) {
+        var m = 0;
+        for (var i = 0; i < lines.size(); i++) {
+            var lw = dc.getTextWidthInPixels(lines[i], font);
+            if (lw > m) { m = lw; }
+        }
+        return m;
+    }
+
+    // Splits text into lines that fit width. Two lines are balanced
+    // ("Shift or press / the Di2 button" rather than a lone last word).
+    // Text without spaces (Chinese) is split between characters.
+    function wrapText(dc, text, font, width) {
+        if (dc.getTextWidthInPixels(text, font) <= width) {
+            return [text];
+        }
+        var words = [];
+        var rest = text;
+        var sp = rest.find(" ");
+        while (sp != null) {
+            words.add(rest.substring(0, sp));
+            rest = rest.substring(sp + 1, rest.length());
+            sp = rest.find(" ");
+        }
+        words.add(rest);
+        var sep = " ";
+        if (words.size() == 1) {
+            // no spaces: treat every character as a word
+            words = [];
+            var cs = text.toCharArray();
+            for (var i = 0; i < cs.size(); i++) {
+                words.add(cs[i].toString());
+            }
+            sep = "";
+        }
+        // best split into two lines
+        var best = null;
+        var bestW = 0;
+        for (var k = 1; k < words.size(); k++) {
+            var l1 = join(words, 0, k, sep);
+            var l2 = join(words, k, words.size(), sep);
+            var w1 = dc.getTextWidthInPixels(l1, font);
+            var w2 = dc.getTextWidthInPixels(l2, font);
+            var mw = w1 > w2 ? w1 : w2;
+            if (best == null || mw < bestW) {
+                best = [l1, l2];
+                bestW = mw;
+            }
+        }
+        if (best != null && bestW <= width) {
+            return best;
+        }
+        // greedy for three or more lines
+        var lines = [];
+        var cur = "";
+        for (var i = 0; i < words.size(); i++) {
+            var t = cur.length() == 0 ? words[i] : cur + sep + words[i];
+            if (cur.length() == 0 || dc.getTextWidthInPixels(t, font) <= width) {
+                cur = t;
+            } else {
+                lines.add(cur);
+                cur = words[i];
+            }
+        }
+        lines.add(cur);
+        return lines;
+    }
+
+    function join(words, from, to, sep) {
+        var s = "";
+        for (var i = from; i < to; i++) {
+            s += (i > from ? sep : "") + words[i];
+        }
+        return s;
+    }
+
     function smaller(f, order) {
         for (var i = 0; i < order.size() - 1; i++) {
             if (order[i] == f) { return order[i + 1]; }
@@ -673,47 +773,6 @@ class Di2View extends WatchUi.DataField {
 
         // active cog
         drawRing(dc, bg, cx2, cy, r2, accent());
-    }
-
-    // Grey side view of a drop-bar shifter (bar, hood with horn, brake lever,
-    // shift paddle) as background of the "Searching" screen.
-    // Shape in unit coordinates (box aspect 247:259): side view of a road
-    // shifter, hood tilted up ~15 degrees, lever ~20 degrees forward.
-    const SHIFTER_W = 247;
-    const SHIFTER_H = 259;
-    const SHIFTER_BAR = [[0.000,0.388],[0.214,0.388],[0.214,0.485],[0.000,0.485]];
-    const SHIFTER_HOOD = [[0.196,0.499],[0.146,0.355],[0.192,0.288],[0.341,0.227],[0.470,0.161],[0.535,0.065],[0.572,0.000],[0.630,0.008],[0.653,0.091],[0.648,0.205],[0.661,0.313],[0.627,0.389],[0.408,0.467]];
-    const SHIFTER_LEVER = [[0.576,0.341],[0.661,0.265],[0.732,0.402],[0.778,0.570],[0.823,0.739],[0.894,0.875],[1.000,0.954],[0.999,1.000],[0.879,0.984],[0.778,0.869],[0.700,0.666],[0.655,0.498]];
-    const SHIFTER_PADDLE = [[0.582,0.454],[0.623,0.440],[0.684,0.649],[0.642,0.663]];
-
-    function drawShifter(dc, dark, top, w, h) {
-        var avail = h - top - 4;
-        if (avail < 30) {
-            return;
-        }
-        var bh = (avail * 0.92).toNumber();
-        var bw = (bh * SHIFTER_W / SHIFTER_H).toNumber();
-        if (bw > w - 8) {
-            bw = w - 8;
-            bh = (bw * SHIFTER_H / SHIFTER_W).toNumber();
-        }
-        var x0 = (w - bw) / 2;
-        var y0 = top + (avail - bh) / 2;
-        var light = dark ? 0x2E2E2E : 0xDCDCDC;
-        var mid = dark ? 0x444444 : 0xC4C4C4;
-        fillShape(dc, SHIFTER_BAR, x0, y0, bw, bh, mid);
-        fillShape(dc, SHIFTER_HOOD, x0, y0, bw, bh, light);
-        fillShape(dc, SHIFTER_LEVER, x0, y0, bw, bh, light);
-        fillShape(dc, SHIFTER_PADDLE, x0, y0, bw, bh, mid);
-    }
-
-    function fillShape(dc, shape, x0, y0, bw, bh, color) {
-        var pts = [];
-        for (var i = 0; i < shape.size(); i++) {
-            pts.add([x0 + (shape[i][0] * bw).toNumber(), y0 + (shape[i][1] * bh).toNumber()]);
-        }
-        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-        dc.fillPolygon(pts);
     }
 
     function accent() {

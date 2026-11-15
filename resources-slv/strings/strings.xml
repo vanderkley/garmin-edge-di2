@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATERIJA DI2</string>
     <string id="ModeRange">DOSEG DI2</string>
     <string id="ModeRangeShort">DOSEG</string>
-    <string id="Searching">Iskanje Di2…</string>
-    <string id="SearchingShort">Iskanje…</string>
+    <string id="Connecting">Povezovanje Di2…</string>
     <string id="WakeHint">Prestavite ali pritisnite gumb Di2</string>
     <string id="FwUnsupported1">Di2 ni na voljo</string>
     <string id="FwUnsupported2">Programska oprema Edge ni podprta</string>
     <string id="FwShort1">Programska oprema</string>
     <string id="FwShort2">ni podprta</string>
-    <string id="Learning">učenje</string>
     <string id="GearChart">Prestava</string>
     <string id="GearUnits">prestava</string>
     <string id="TeethChart">Zadnji zobnik</string>

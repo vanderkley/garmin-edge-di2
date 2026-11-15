@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATERIE DI2</string>
     <string id="ModeRange">AUTONOMIE DI2</string>
     <string id="ModeRangeShort">AUTONOMIE</string>
-    <string id="Searching">Se caută Di2…</string>
-    <string id="SearchingShort">Se caută…</string>
+    <string id="Connecting">Conectare Di2…</string>
     <string id="WakeHint">Schimbați treapta sau apăsați butonul Di2</string>
     <string id="FwUnsupported1">Di2 indisponibil</string>
     <string id="FwUnsupported2">Firmware Edge neacceptat</string>
     <string id="FwShort1">Firmware Edge</string>
     <string id="FwShort2">neacceptat</string>
-    <string id="Learning">învățare</string>
     <string id="GearChart">Treaptă</string>
     <string id="GearUnits">treaptă</string>
     <string id="TeethChart">Pinion spate</string>

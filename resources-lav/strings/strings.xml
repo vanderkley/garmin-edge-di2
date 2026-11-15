@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2 AKUMULATORS</string>
     <string id="ModeRange">DI2 SNIEDZAMĪBA</string>
     <string id="ModeRangeShort">SNIEDZAMĪBA</string>
-    <string id="Searching">Meklē Di2…</string>
-    <string id="SearchingShort">Meklē…</string>
+    <string id="Connecting">Savieno Di2…</string>
     <string id="WakeHint">Pārslēdziet vai nospiediet Di2 pogu</string>
     <string id="FwUnsupported1">Di2 nav pieejams</string>
     <string id="FwUnsupported2">Edge programmaparatūra netiek atbalstīta</string>
     <string id="FwShort1">Edge programmatūra</string>
     <string id="FwShort2">netiek atbalstīta</string>
-    <string id="Learning">mācās</string>
     <string id="GearChart">Pārnesums</string>
     <string id="GearUnits">pārn.</string>
     <string id="TeethChart">Aizmugurējais zobrats</string>

@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATERIJA DI2</string>
     <string id="ModeRange">DOMET DI2</string>
     <string id="ModeRangeShort">DOMET</string>
-    <string id="Searching">Traženje Di2…</string>
-    <string id="SearchingShort">Traženje…</string>
+    <string id="Connecting">Povezivanje Di2…</string>
     <string id="WakeHint">Promijenite brzinu ili pritisnite tipku Di2</string>
     <string id="FwUnsupported1">Di2 nije dostupan</string>
     <string id="FwUnsupported2">Firmver Edge nije podržan</string>
     <string id="FwShort1">Firmver Edge</string>
     <string id="FwShort2">nije podržan</string>
-    <string id="Learning">učenje</string>
     <string id="GearChart">Brzina</string>
     <string id="GearUnits">brzina</string>
     <string id="TeethChart">Stražnji zupčanik</string>

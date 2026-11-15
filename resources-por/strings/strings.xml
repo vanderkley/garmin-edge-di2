@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATERIA DI2</string>
     <string id="ModeRange">AUTONOMIA DI2</string>
     <string id="ModeRangeShort">AUTONOMIA</string>
-    <string id="Searching">A procurar Di2…</string>
-    <string id="SearchingShort">A procurar…</string>
+    <string id="Connecting">A ligar ao Di2…</string>
     <string id="WakeHint">Mude ou prima o botão Di2</string>
     <string id="FwUnsupported1">Di2 indisponível</string>
     <string id="FwUnsupported2">Firmware do Edge não suportado</string>
     <string id="FwShort1">Firmware Edge</string>
     <string id="FwShort2">não suportado</string>
-    <string id="Learning">a aprender</string>
     <string id="GearChart">Mudança</string>
     <string id="GearUnits">mud.</string>
     <string id="TeethChart">Carreto traseiro</string>

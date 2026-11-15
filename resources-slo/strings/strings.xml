@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATÉRIA DI2</string>
     <string id="ModeRange">DOJAZD DI2</string>
     <string id="ModeRangeShort">DOJAZD</string>
-    <string id="Searching">Hľadá sa Di2…</string>
-    <string id="SearchingShort">Hľadá sa…</string>
+    <string id="Connecting">Pripája sa Di2…</string>
     <string id="WakeHint">Preraďte alebo stlačte tlačidlo Di2</string>
     <string id="FwUnsupported1">Di2 nedostupné</string>
     <string id="FwUnsupported2">Firmvér Edge nie je podporovaný</string>
     <string id="FwShort1">Firmvér Edge</string>
     <string id="FwShort2">nepodporovaný</string>
-    <string id="Learning">učenie</string>
     <string id="GearChart">Prevod</string>
     <string id="GearUnits">prevod</string>
     <string id="TeethChart">Zadný pastorok</string>

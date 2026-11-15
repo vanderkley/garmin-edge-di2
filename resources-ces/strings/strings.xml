@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATERIE DI2</string>
     <string id="ModeRange">DOJEZD DI2</string>
     <string id="ModeRangeShort">DOJEZD</string>
-    <string id="Searching">Hledání Di2…</string>
-    <string id="SearchingShort">Hledání…</string>
+    <string id="Connecting">Připojování Di2…</string>
     <string id="WakeHint">Přeřaďte nebo stiskněte tlačítko Di2</string>
     <string id="FwUnsupported1">Di2 nedostupné</string>
     <string id="FwUnsupported2">Firmware Edge není podporován</string>
     <string id="FwShort1">Firmware Edge</string>
     <string id="FwShort2">nepodporován</string>
-    <string id="Learning">učení</string>
     <string id="GearChart">Převod</string>
     <string id="GearUnits">převod</string>
     <string id="TeethChart">Zadní pastorek</string>

@@ -1,9 +1,10 @@
 import Toybox.Application;
 import Toybox.Lang;
 
-// Learns how far THIS bike rides per percent of Di2 battery and estimates the
-// remaining range. Nothing is shown until enough data was collected, because
-// Di2 consumption depends on the number of shifts, not on distance.
+// Estimates the remaining Di2 battery range. It starts from Shimano's figure
+// (about 1000 km on a full charge, so 10 km per percent) and learns in the
+// background how far THIS bike really rides per percent; the learned value
+// gradually replaces the default.
 //
 // Shimano reports the battery in coarse steps (100, 90, 80 ... 25, 20, 15, 10, 5, 0),
 // so we need at least MIN_DROP percent and MIN_KM since the last charge.
@@ -11,10 +12,12 @@ class Di2Range {
     const MIN_DROP = 20;          // percent
     const MIN_METERS = 40000.0;   // 40 km
     const SAVE_EVERY_S = 60;
+    const DEFAULT_KM_PER_PCT = 10.0;   // Shimano: ~1000 km per charge
 
     var basePct = -1;      // battery % at the last full/charged reading
     var meters = 0.0;      // distance ridden since basePct
-    var kmPerPct = 0.0;    // learned, 0 = unknown
+    var kmPerPct = 0.0;    // learned, 0 = not yet (the default is used)
+    var lastPct = -1;      // last battery step seen, the estimate is updated once per step
     var lastDist = -1.0;
     var dirty = false;
     var sinceSave = 0;
@@ -38,14 +41,18 @@ class Di2Range {
             if (basePct < 0 || pct > basePct) {
                 // first reading or battery was charged: restart the measurement
                 basePct = pct;
+                lastPct = pct;
                 meters = 0.0;
                 dirty = true;
-            } else {
+            } else if (lastPct < 0 || pct < lastPct) {
+                // the battery dropped to the next step: update the estimate once
+                lastPct = pct;
                 var drop = basePct - pct;
                 if (drop >= MIN_DROP && meters >= MIN_METERS) {
                     var k = (meters / 1000.0) / drop;
-                    // smooth with the previous estimate to avoid jumps between 10% steps
-                    kmPerPct = (kmPerPct > 0) ? (kmPerPct * 0.5 + k * 0.5) : k;
+                    // smooth with the previous (or default) estimate to avoid
+                    // jumps between the coarse battery steps
+                    kmPerPct = kmPerPctOrDefault() * 0.5 + k * 0.5;
                     dirty = true;
                 }
             }
@@ -67,22 +74,16 @@ class Di2Range {
         }
     }
 
-    // Remaining range in km, or -1 if not learned yet.
-    function rangeKm(pct) {
-        if (kmPerPct <= 0 || pct < 0) {
-            return -1;
-        }
-        return pct * kmPerPct;
+    function kmPerPctOrDefault() {
+        return kmPerPct > 0 ? kmPerPct : DEFAULT_KM_PER_PCT;
     }
 
-    // Learning progress for the display: [done, target, unit] where unit is
-    // "km" while distance is still missing, otherwise "%" battery used.
-    function progress(pct) {
-        if (meters < MIN_METERS) {
-            return [(meters / 1000.0).toNumber(), (MIN_METERS / 1000.0).toNumber(), "km"];
+    // Remaining range in km (default estimate until learned), -1 if the battery is unknown.
+    function rangeKm(pct) {
+        if (pct < 0) {
+            return -1;
         }
-        var drop = (basePct >= 0 && pct >= 0) ? basePct - pct : 0;
-        return [drop, MIN_DROP, "%"];
+        return pct * kmPerPctOrDefault();
     }
 
     function save() {

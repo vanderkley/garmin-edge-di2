@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.1
+
+- Battery range shows an estimate right away (Shimano: about 1000 km per charge) and adapts
+  to your own rides in the background, instead of showing "learning" first
+- Friendlier start screen: "Shift or press the Di2 button" in the field's own font, and
+  "Connecting Di2…" once the Di2 is found
+- Edge Explore 2 firmware 31.33 (Bluetooth bug): the field now shows the Di2 battery and range
+  instead of only "Edge firmware not supported"
+- Demos no longer show the searching screen
+
 ## 1.0.0
 
 First release.

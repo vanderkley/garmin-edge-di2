@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2-BATTERI</string>
     <string id="ModeRange">DI2-RÄCKVIDD</string>
     <string id="ModeRangeShort">RÄCKVIDD</string>
-    <string id="Searching">Söker Di2…</string>
-    <string id="SearchingShort">Söker…</string>
+    <string id="Connecting">Ansluter Di2…</string>
     <string id="WakeHint">Växla eller tryck på Di2-knappen</string>
     <string id="FwUnsupported1">Di2 ej tillgänglig</string>
     <string id="FwUnsupported2">Edge-firmware stöds inte</string>
     <string id="FwShort1">Edge-firmware</string>
     <string id="FwShort2">stöds inte</string>
-    <string id="Learning">lär sig</string>
     <string id="GearChart">Växel</string>
     <string id="GearUnits">växel</string>
     <string id="TeethChart">Bakre kugghjul</string>

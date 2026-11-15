@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2 AKKU</string>
     <string id="ModeRange">DI2 HATÓTÁV</string>
     <string id="ModeRangeShort">HATÓTÁV</string>
-    <string id="Searching">Di2 keresése…</string>
-    <string id="SearchingShort">Keresés…</string>
+    <string id="Connecting">Di2 csatlakoztatása…</string>
     <string id="WakeHint">Váltson vagy nyomja meg a Di2 gombot</string>
     <string id="FwUnsupported1">Di2 nem elérhető</string>
     <string id="FwUnsupported2">Az Edge firmware nem támogatott</string>
     <string id="FwShort1">Edge firmware</string>
     <string id="FwShort2">nem támogatott</string>
-    <string id="Learning">tanul</string>
     <string id="GearChart">Fokozat</string>
     <string id="GearUnits">fokozat</string>
     <string id="TeethChart">Hátsó fogaskerék</string>

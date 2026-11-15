@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2-BATTERI</string>
     <string id="ModeRange">DI2-REKKEVIDDE</string>
     <string id="ModeRangeShort">REKKEVIDDE</string>
-    <string id="Searching">Søker etter Di2…</string>
-    <string id="SearchingShort">Søker…</string>
+    <string id="Connecting">Kobler til Di2…</string>
     <string id="WakeHint">Gir eller trykk på Di2-knappen</string>
     <string id="FwUnsupported1">Di2 utilgjengelig</string>
     <string id="FwUnsupported2">Edge-fastvare støttes ikke</string>
     <string id="FwShort1">Edge-fastvare</string>
     <string id="FwShort2">støttes ikke</string>
-    <string id="Learning">lærer</string>
     <string id="GearChart">Gir</string>
     <string id="GearUnits">gir</string>
     <string id="TeethChart">Bakre tannhjul</string>

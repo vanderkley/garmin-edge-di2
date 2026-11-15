@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2 BATERIJA</string>
     <string id="ModeRange">DI2 NUOTOLIS</string>
     <string id="ModeRangeShort">NUOTOLIS</string>
-    <string id="Searching">Ieškoma Di2…</string>
-    <string id="SearchingShort">Ieškoma…</string>
+    <string id="Connecting">Jungiamasi prie Di2…</string>
     <string id="WakeHint">Perjunkite arba paspauskite Di2 mygtuką</string>
     <string id="FwUnsupported1">Di2 nepasiekiamas</string>
     <string id="FwUnsupported2">Edge programinė įranga nepalaikoma</string>
     <string id="FwShort1">Edge programinė įranga</string>
     <string id="FwShort2">nepalaikoma</string>
-    <string id="Learning">mokomasi</string>
     <string id="GearChart">Pavara</string>
     <string id="GearUnits">pavara</string>
     <string id="TeethChart">Galinė žvaigždutė</string>

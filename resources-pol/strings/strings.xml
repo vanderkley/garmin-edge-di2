@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATERIA DI2</string>
     <string id="ModeRange">ZASIĘG DI2</string>
     <string id="ModeRangeShort">ZASIĘG</string>
-    <string id="Searching">Szukanie Di2…</string>
-    <string id="SearchingShort">Szukanie…</string>
+    <string id="Connecting">Łączenie z Di2…</string>
     <string id="WakeHint">Zmień bieg lub naciśnij przycisk Di2</string>
     <string id="FwUnsupported1">Di2 niedostępne</string>
     <string id="FwUnsupported2">Oprogramowanie Edge nieobsługiwane</string>
     <string id="FwShort1">Oprogramowanie Edge</string>
     <string id="FwShort2">nieobsługiwane</string>
-    <string id="Learning">uczenie</string>
     <string id="GearChart">Bieg</string>
     <string id="GearUnits">bieg</string>
     <string id="TeethChart">Tylna zębatka</string>

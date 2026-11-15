@@ -20,15 +20,14 @@ module Di2Demo {
         ble.battery = demoBattery();
     }
 
-    // called once per second: walk through the gears, switch view every 6 s,
-    // and show the "searching" screen for 6 s after every full cycle
+    // called once per second: walk through the gears and switch view every 6 s
+    // (always connected: the demos only show the working field)
     (:demo)
     function tick(ble) {
         t++;
         ble.gear = 1 + (t % 36) / 3;   // all 12 gears once per 36 s cycle
-        var phase = (t / 6) % 6;
-        ble.state = (phase == 5) ? Di2Ble.ST_SCAN : Di2Ble.ST_READY;
-        if (t % 6 == 0 && phase != 0) {
+        ble.state = Di2Ble.ST_READY;
+        if (t % 6 == 0) {
             ble.dflyEvents.add(:short);
         }
     }

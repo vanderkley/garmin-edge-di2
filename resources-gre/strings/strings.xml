@@ -5,14 +5,12 @@
     <string id="ModeBattery">ΜΠΑΤΑΡΙΑ DI2</string>
     <string id="ModeRange">ΑΥΤΟΝΟΜΙΑ DI2</string>
     <string id="ModeRangeShort">ΑΥΤΟΝΟΜΙΑ</string>
-    <string id="Searching">Αναζήτηση Di2…</string>
-    <string id="SearchingShort">Αναζήτηση…</string>
+    <string id="Connecting">Σύνδεση Di2…</string>
     <string id="WakeHint">Αλλάξτε ταχύτητα ή πατήστε το κουμπί Di2</string>
     <string id="FwUnsupported1">Το Di2 δεν είναι διαθέσιμο</string>
     <string id="FwUnsupported2">Το υλικολογισμικό Edge δεν υποστηρίζεται</string>
     <string id="FwShort1">Υλικολογισμικό Edge</string>
     <string id="FwShort2">δεν υποστηρίζεται</string>
-    <string id="Learning">εκμάθηση</string>
     <string id="GearChart">Ταχύτητα</string>
     <string id="GearUnits">ταχ.</string>
     <string id="TeethChart">Πίσω γρανάζι</string>

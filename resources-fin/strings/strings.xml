@@ -5,14 +5,12 @@
     <string id="ModeBattery">DI2-AKKU</string>
     <string id="ModeRange">DI2-TOIMINTAMATKA</string>
     <string id="ModeRangeShort">TOIMINTAMATKA</string>
-    <string id="Searching">Etsitään Di2…</string>
-    <string id="SearchingShort">Etsitään…</string>
+    <string id="Connecting">Yhdistetään Di2…</string>
     <string id="WakeHint">Vaihda tai paina Di2-painiketta</string>
     <string id="FwUnsupported1">Di2 ei käytettävissä</string>
     <string id="FwUnsupported2">Edge-laiteohjelmistoa ei tueta</string>
     <string id="FwShort1">Edge-ohjelmisto</string>
     <string id="FwShort2">ei tuettu</string>
-    <string id="Learning">opettelee</string>
     <string id="GearChart">Vaihde</string>
     <string id="GearUnits">vaihde</string>
     <string id="TeethChart">Takaratas</string>

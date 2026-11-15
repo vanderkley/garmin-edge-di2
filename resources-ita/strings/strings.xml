@@ -5,14 +5,12 @@
     <string id="ModeBattery">BATTERIA DI2</string>
     <string id="ModeRange">AUTONOMIA DI2</string>
     <string id="ModeRangeShort">AUTONOMIA</string>
-    <string id="Searching">Ricerca Di2…</string>
-    <string id="SearchingShort">Ricerca…</string>
+    <string id="Connecting">Connessione Di2…</string>
     <string id="WakeHint">Cambia o premi il tasto Di2</string>
     <string id="FwUnsupported1">Di2 non disponibile</string>
     <string id="FwUnsupported2">Firmware Edge non supportato</string>
     <string id="FwShort1">Firmware Edge</string>
     <string id="FwShort2">non supportato</string>
-    <string id="Learning">apprendimento</string>
     <string id="GearChart">Marcia</string>
     <string id="GearUnits">marcia</string>
     <string id="TeethChart">Pignone posteriore</string>
