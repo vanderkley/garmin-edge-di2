@@ -9,6 +9,8 @@
 - Edge Explore 2 firmware 31.33 (Bluetooth bug): the field now shows the Di2 battery and range
   instead of only "Edge firmware not supported"
 - Demos no longer show the searching screen
+- Free trial is now 20 km (was 500 km); the remaining trial distance stays visible during the last 5 km
+- License price: 8 EUR
 
 ## 1.0.0
 

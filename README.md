@@ -28,13 +28,13 @@ A Connect IQ data field that connects to your Di2 rear derailleur over Bluetooth
 - **Two bikes**: separate cassette and chainring settings for bike 1 and bike 2
 - **26 languages**: all European languages supported by the Edge, plus Russian and Chinese (Simplified)
 
-## 500 km free trial
+## 20 km free trial
 
-Everything works for your first **500 km** (counted while riding with the Di2 connected). The remaining
-trial distance is shown briefly at the start of each ride, and permanently during the last 50 km.
+Everything works for your first **20 km** (counted while riding with the Di2 connected). The remaining
+trial distance is shown briefly at the start of each ride, and permanently during the last 5 km.
 After that, the field asks for a one-time license.
 
-**Get a license (one-time):** buy me a coffee on [Ko-fi](https://ko-fi.com/vanderkley). You will get
+**Get a license (one-time, €8):** buy it in the [Ko-fi shop](https://ko-fi.com/s/9499a52ec9). You will get
 a license code by e-mail (sent to your Ko-fi / PayPal e-mail address, or the address you put in the
 message). Enter that e-mail and the code in the app settings
 (Connect IQ app → Di2 Gear and Battery → Settings).

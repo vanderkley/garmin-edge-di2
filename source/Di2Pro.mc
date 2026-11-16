@@ -3,7 +3,7 @@ import Toybox.Lang;
 
 // Free trial: the whole field works for the first TRIAL_METERS ridden with the
 // Di2 connected and the timer running. After that a license code is needed.
-const TRIAL_METERS = 500000.0;   // 500 km
+const TRIAL_METERS = 20000.0;    // 20 km
 
 class Di2Pro {
 

@@ -377,7 +377,7 @@ class Di2View extends WatchUi.DataField {
         var trialLabel = false;
         if (Di2Demo.showTrial() && !pro.licensed && pro.unlocked() && ble.isConnected()) {
             var left = pro.remainingKm();
-            if (left <= 50 || ticks < trialShowUntil) {
+            if (left <= 5 || ticks < trialShowUntil) {
                 var v = metric ? left : left / 1.609344;
                 label = Lang.format(sTrialLeft, [v.toNumber() + (metric ? " km" : " mi")]);
                 trialLabel = true;

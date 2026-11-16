@@ -8,7 +8,7 @@ import Toybox.System;
 //   layouts.jungle  fake data, a full Edge page with several fields
 //   lowbatt.jungle  fake data with an 8% battery and a running timer
 //                   (shows the low-battery tone and red label)
-//   trialend.jungle page demo with the 500 km trial used up (lock screen)
+//   trialend.jungle page demo with the free trial used up (lock screen)
 module Di2Demo {
     var t = 0;
 
@@ -81,7 +81,7 @@ module Di2Demo {
         return true;
     }
 
-    // trialend.jungle: pretend the 500 km trial is used up (shows the lock screen)
+    // trialend.jungle: pretend the free trial is used up (shows the lock screen)
     (:normaltrial)
     function trialMeters(m) {
         return m;
