@@ -20,7 +20,6 @@ class Di2View extends WatchUi.DataField {
     var sUnlock;
     var sTrialLeft;
     var trialShowUntil = 0;     // ticks: show the trial km in the label until then
-    var wasConnected = false;
     var wasRunning = false;
     const KOFI = "ko-fi.com/vanderkley";
     var mode = MODE_GEAR;
@@ -186,12 +185,10 @@ class Di2View extends WatchUi.DataField {
 
         var running = info has :timerState && info.timerState == Activity.TIMER_STATE_ON;
         running = running || Di2Demo.forceRunning();
-        // show the remaining trial km for 5 s when the Di2 connects or the ride starts
-        var conn = ble.isConnected();
-        if ((conn && !wasConnected) || (running && !wasRunning)) {
-            trialShowUntil = ticks + 5;
+        // show the remaining trial km for 20 s after the timer starts
+        if (running && !wasRunning) {
+            trialShowUntil = ticks + 20;
         }
-        wasConnected = conn;
         wasRunning = running;
         if (pro.unlocked()) {
             checkBatteryAlert(running);
@@ -375,9 +372,12 @@ class Di2View extends WatchUi.DataField {
         var h = dc.getHeight();
         var label = isWide(w) ? labels[mode] : labelsShort[mode];
         var trialLabel = false;
-        if (Di2Demo.showTrial() && !pro.licensed && pro.unlocked() && ble.isConnected()) {
+        // Trial label instead of the view name (like BuienRit / WindRit): all the time
+        // while the timer stands still (before the ride, paused), while riding for 20 s
+        // after the timer starts and 6 s every minute in the last 10 km.
+        if (Di2Demo.showTrial() && !pro.licensed && pro.unlocked()) {
             var left = pro.remainingKm();
-            if (left <= 5 || ticks < trialShowUntil) {
+            if (!wasRunning || ticks < trialShowUntil || (left <= 10 && ticks % 60 < 6)) {
                 var v = metric ? left : left / 1.609344;
                 label = Lang.format(sTrialLeft, [v.toNumber() + (metric ? " km" : " mi")]);
                 trialLabel = true;

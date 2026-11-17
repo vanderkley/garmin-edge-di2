@@ -9,7 +9,8 @@
 - Edge Explore 2 firmware 31.33 (Bluetooth bug): the field now shows the Di2 battery and range
   instead of only "Edge firmware not supported" (range below the battery %, as D-FLY is blocked too)
 - Demos no longer show the searching screen
-- Free trial is now 20 km (was 500 km); the remaining trial distance stays visible during the last 5 km
+- Free trial is now 50 km (was 500 km). The remaining trial distance is shown like in BuienRit and
+  WindRit: before the ride and while paused, 20 s after the timer starts, and every minute in the last 10 km
 - License price: 8 EUR
 
 ## 1.0.0

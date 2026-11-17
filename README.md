@@ -28,10 +28,11 @@ A Connect IQ data field that connects to your Di2 rear derailleur over Bluetooth
 - **Two bikes**: separate cassette and chainring settings for bike 1 and bike 2
 - **26 languages**: all European languages supported by the Edge, plus Russian and Chinese (Simplified)
 
-## 20 km free trial
+## 50 km free trial
 
-Everything works for your first **20 km** (counted while riding with the Di2 connected). The remaining
-trial distance is shown briefly at the start of each ride, and permanently during the last 5 km.
+Everything works for your first **50 km** (counted while riding with the Di2 connected). The field
+label shows the remaining trial distance before the ride and while paused, for 20 seconds after the
+timer starts, and briefly every minute during the last 10 km.
 After that, the field asks for a one-time license.
 
 **Get a license (one-time, €8):** buy it in the [Ko-fi shop](https://ko-fi.com/s/9499a52ec9). You will get
