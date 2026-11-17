@@ -244,7 +244,7 @@ module Di2Demo {
     function nativeField(dc, x, y, w, h, label, value, unit) {
         var sw = System.getDeviceSettings().screenWidth;
         var lf = (w >= sw * 0.8) ? Graphics.FONT_MEDIUM : Graphics.FONT_SMALL;
-        var pad = (h * 0.05).toNumber();
+        var pad = (System.getDeviceSettings().screenHeight * 0.02).toNumber();   // same margin as Di2View
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
         dc.drawText(x + w / 2, y + pad, lf, label, Graphics.TEXT_JUSTIFY_CENTER);
         var top = y + pad + dc.getFontHeight(lf);

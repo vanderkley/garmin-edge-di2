@@ -385,10 +385,11 @@ class Di2View extends WatchUi.DataField {
         }
         var labelFont = fitFont(dc, label, labelFontFor(w, h),
             [Graphics.FONT_MEDIUM, Graphics.FONT_SMALL, Graphics.FONT_TINY, Graphics.FONT_XTINY], w - 6);
-        // top padding like the native fields (label must not touch the border)
-        var pad = (h * 0.05).toNumber();
+        // top padding like the native fields: a fixed margin relative to the
+        // screen (about 8 px on a 400 px high screen), less only in very low fields
+        var pad = (sh * 0.02).toNumber();
+        if (pad > h * 0.12) { pad = (h * 0.12).toNumber(); }
         if (pad < 2) { pad = 2; }
-        if (pad > 10) { pad = 10; }
         var lh = pad + dc.getFontHeight(labelFont);
 
         stale = ble.isStale();
