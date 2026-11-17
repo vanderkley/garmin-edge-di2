@@ -61,7 +61,8 @@ message). Enter that e-mail and the code in the app settings
 2. On the Edge, go to **Activity Profiles → profile → Data Screens**, pick a field
    and choose **Connect IQ → Di2 Gear and Battery**.
 3. In the Connect IQ app, open the app settings and choose your cassette and chainring(s).
-4. Shift once to wake the Di2. The field connects over Bluetooth.
+4. Shift or press a button on your shifter to wake the Di2. The field connects over Bluetooth
+   within about 10 seconds. The first time, the Edge asks to pair an "Unknown BLE device": accept it.
 
 **Sideloading instead** (your own build): copy `bin/Di2.prg` to `Garmin/Apps/` over USB
 (on macOS: `scripts/install-macos.sh`). Sideloaded apps can't be configured from the phone:
