@@ -35,10 +35,10 @@ label shows the remaining trial distance before the ride and while paused, for 2
 timer starts, and briefly every minute during the last 10 km.
 After that, the field asks for a one-time license.
 
-**Get a license (one-time, €8):** buy it in the [Ko-fi shop](https://ko-fi.com/s/9499a52ec9). You will get
-a license code by e-mail (sent to your Ko-fi / PayPal e-mail address, or the address you put in the
-message). Enter that e-mail and the code in the app settings
-(Connect IQ app → Di2 Gear and Battery → Settings).
+**Get a license (one-time, €8):** order it on [buienrit.nl/di2](https://buienrit.nl/di2). You get a
+payment request by mail; once it is paid, the license code is mailed to the address you ordered with.
+Enter that e-mail and the code in the app settings (Connect IQ app → Di2 Gear and Battery → Settings).
+The app never goes online: the code is checked on the Edge itself.
 
 ## Compatibility
 

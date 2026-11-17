@@ -21,7 +21,7 @@ class Di2View extends WatchUi.DataField {
     var sTrialLeft;
     var trialShowUntil = 0;     // ticks: show the trial km in the label until then
     var wasRunning = false;
-    const KOFI = "ko-fi.com/vanderkley";
+    const SHOP = "buienrit.nl/di2";   // where the license is ordered
     var mode = MODE_GEAR;
     var flashUntil = 0;
     var ticks = 0;
@@ -598,10 +598,10 @@ class Di2View extends WatchUi.DataField {
         dc.drawText(w / 2, y + dc.getFontHeight(f1), f2, line2, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
-    // "Trial ended / Unlock Pro: / ko-fi.com/vanderkley", centred, fitted to the field.
+    // "Trial ended / Unlock Pro: / buienrit.nl/di2", centred, fitted to the field.
     function drawLocked(dc, fg, top, labelFont, w, h) {
         var order = [Graphics.FONT_MEDIUM, Graphics.FONT_SMALL, Graphics.FONT_TINY, Graphics.FONT_XTINY];
-        var lines = isWide(w) && h >= sh * 0.22 ? [sTrialEnded, sUnlock, KOFI] : [sTrialEnded, KOFI];
+        var lines = isWide(w) && h >= sh * 0.22 ? [sTrialEnded, sUnlock, SHOP] : [sTrialEnded, SHOP];
         var fonts = [];
         var total = 0;
         for (var i = 0; i < lines.size(); i++) {

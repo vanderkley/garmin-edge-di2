@@ -11,7 +11,7 @@
 - Demos no longer show the searching screen
 - Free trial is now 50 km (was 500 km). The remaining trial distance is shown like in BuienRit and
   WindRit: before the ride and while paused, 20 s after the timer starts, and every minute in the last 10 km
-- License price: 8 EUR
+- License price: 8 EUR, ordered on buienrit.nl/di2 (the lock screen shows that address)
 
 ## 1.0.0
 
