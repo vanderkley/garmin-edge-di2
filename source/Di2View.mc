@@ -450,7 +450,20 @@ class Di2View extends WatchUi.DataField {
         var val = currentValue();
         var unitFont = labelFont;
         if (val[1].length() > 3 && !isWide(w)) { unitFont = Graphics.FONT_XTINY; }
-        drawValue(dc, fg, val[0], val[1], unitFont, lh, h - 2, w);
+        var bottom = h - 2;
+        // battery-only mode (no D-FLY to switch views): range below the battery %
+        if (!ble.gearAvailable && mode == MODE_BATT) {
+            var km = range.rangeKm(ble.battery);
+            var secH = dc.getFontHeight(labelFont);
+            if (km >= 0 && h - lh >= secH * 3) {
+                var v = metric ? km : km / 1.609344;
+                var txt = v.toNumber() + (metric ? " km" : " mi");
+                bottom = h - 2 - secH;
+                dc.setColor(valueColor(), Graphics.COLOR_TRANSPARENT);
+                dc.drawText(w / 2, bottom, labelFont, txt, Graphics.TEXT_JUSTIFY_CENTER);
+            }
+        }
+        drawValue(dc, fg, val[0], val[1], unitFont, lh, bottom, w);
     }
 
     function drawValue(dc, fg, text, unit, unitFont, top, bottom, w) {
