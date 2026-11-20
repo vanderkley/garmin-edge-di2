@@ -84,7 +84,7 @@ export DEVELOPER_KEY=$PWD/developer_key.der
 scripts/build.sh            # -> bin/Di2.prg (no bike preset)
 scripts/build.sh personal   # -> bin/Di2.prg with your bike from resources-personal/
 scripts/build.sh export     # -> bin/Di2.iq store package, all devices
-scripts/keygen.py you@example.com   # Pro code for your own build
+scripts/keygen.py you@example.com   # license code for your own build
 scripts/install-macos.sh    # copy to the Edge over USB (close Garmin Express first)
 scripts/simulate.sh         # demo with fake data in the Connect IQ simulator
 scripts/simulate.sh layouts # same, on a full Edge page with several fields
@@ -93,7 +93,7 @@ DEVICE=edge1040 scripts/build.sh   # build for another Edge model
 ```
 
 Self-built versions use a public placeholder secret (`source/Di2Secret.mc.example`), so
-`scripts/keygen.py` gives you a working Pro code for your own build. Codes for the store version
+`scripts/keygen.py` gives you a working license code for your own build. Codes for the store version
 are not interchangeable with self-built ones.
 
 ## How it works
