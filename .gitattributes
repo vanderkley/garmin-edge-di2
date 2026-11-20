@@ -1,0 +1,2 @@
+# GitHub language stats: .mc is Monkey C (Connect IQ), not a Windows message file
+*.mc linguist-language=Monkey-C
