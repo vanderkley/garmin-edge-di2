@@ -25,6 +25,3 @@ source/Di2Secret.mc
 # your own bike defaults for sideloaded builds
 resources-personal/
 personal.jungle
-
-# old Ko-fi shop material (licenses are sold on buienrit.nl/di2 now)
-store/kofi/
